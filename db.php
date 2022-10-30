@@ -1,7 +1,7 @@
 <?php
 class db{
-    public $sql;
-    public $connection;
+    private $sql;
+    private $connection;
     public function __construct($db_server, $db_username, $db_pass, $db_name){
         $this->connection = mysqli_connect($db_server, $db_username, $db_pass, $db_name);
     }
