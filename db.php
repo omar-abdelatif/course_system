@@ -50,15 +50,16 @@ class db{
         return $this;
     }
     public function first(){
-        $query = mysqli_query($this->connection,$this->sql);
-        return mysqli_fetch_assoc($query);
+        return mysqli_fetch_assoc($this->query());
     }
     public function all(){
-        $query = mysqli_query($this->connection,$this->sql);
-        return mysqli_fetch_all($query, MYSQLI_ASSOC);
+        return mysqli_fetch_all($this->query(), MYSQLI_ASSOC);
     }
     public function excute(){
-        mysqli_query($this->connection, $this->sql);
+        $this->query();
         return mysqli_affected_rows($this->connection);
+    }
+    private function query(){
+        return mysqli_query($this->connection, $this->sql);
     }
 }
